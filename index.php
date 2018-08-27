@@ -77,7 +77,7 @@
 
             </li>
             <li>
-                <a href="print_record.php" class="sidebar-item clear-fix btn btn-sidebar">Print Record</a>
+                <a href="/print_record.php" class="sidebar-item clear-fix btn btn-sidebar">Print Record</a>
 
             </li>
 <!--
@@ -100,10 +100,11 @@
         <a href="https://orientalinsurance.org.in/web/guest/renew?isSelected=renew&isRefresh=true" class="btn2" target="_blank">Oriental Insurance</a>
         <a href="https://www.makemytrip.com/flights/" class="btn2" target="_blank">Flight</a>
     </div>
+    <script type="text/javascript" src="event.js"></script>
     <script type="text/javascript">
         function myfun(){
             var amount = prompt("enter the amount that you deposited");
-            window.location.href = "http://localhost/accountsApp/index.php?amount=" + amount;
+            window.location.href = "http://localhost/accountApp/index.php?amount=" + amount;
         } 
 
        
