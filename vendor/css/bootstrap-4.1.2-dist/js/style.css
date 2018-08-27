@@ -1,0 +1,54 @@
+html{
+    height: 100%;
+/*    margin: 0px;*/
+}
+body{
+    height: 100%;
+/*    margin: 0px;*/
+}
+body #vertical-center{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.side-bar{
+    list-style: none;
+    display: block;
+    width: 91%;
+    height: 50vh;
+    margin: 5% 0;
+}
+.sidebar-item{
+    float: right;
+    margin-top: 1rem;
+    display: block;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 25%;
+}
+
+.clear-fix{
+    clear: both;
+
+}
+.btn.btn-sidebar{
+    background-color: rgba( 244, 67, 67, 0.572 );
+    text-align: center;
+}
+
+a.btn-sidebar:link,
+a.btn-sidebar:visited{
+    color: white;
+}
+
+a:link.sidebar-item {
+    color: black;
+}
+a:hover.sidebar-item{
+    color: greenyellow;
+}
+
+.top-bg{
+    font-size: 1.3em;
+    text-decoration: none;
+}
