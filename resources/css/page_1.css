@@ -1,0 +1,123 @@
+/**************************
+GENERAL
+******************************/
+a:link,a:visited{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    color:greenyellow;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    background: linear-gradient(rgba( 255, 255, 255, 0.7), rgba( 255, 255, 255, 0.7)),
+    url("https://wallpaperwire.com/wp-content/uploads/2018/03/Abstract-background-3.jpg");
+}
+
+body #vertical-center {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/***************************
+Buttons custom
+*****************************/
+
+.btn2 {
+    display: inline-block;
+    width: 200px;
+    background-color: rgba( 244, 67, 67, 0.572 );
+    margin: 5px;
+    padding: 0.5em 0em;
+    text-align: center;
+    font-size: 1.1em;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+/**********************
+FOOTER
+**************************/
+.footer{
+    width: 100%;
+    position: absolute;
+    margin-left: 8%;
+    bottom: 5%;
+    
+}
+/*********************
+SIDEBAR
+************************/
+
+html body div#sidebar{
+    position: absolute;
+    right: 10px;
+    width: 30%;
+    height: 60%;
+    background-color: antiquewhite;
+    color: coral;
+    float: right;
+}
+/******************************
+TOP BAR 
+******************************/
+a.top-bg:hover{
+    color: red;
+}
+
+a.top-bg:link,
+a.top-bg:visited{
+    color: #007bff;;
+}
+
+
+/*******************
+MAKE RESPONSIVE
+*********************/
+
+@media screen and (max-width:600px){
+    .footer{
+/*        display: none;*/
+        position: relative;
+        bottom: 0.5%;
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
