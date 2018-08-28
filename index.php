@@ -82,7 +82,7 @@
                     <input type="submit" value="CLEAR" name="clear" class="form-control btn btn-danger mt-3 btn-proceed d-inline">
                 </div>
             </div>
-       
+    </form>
     </div>
         
            <ul class="side-bar">
