@@ -1,4 +1,5 @@
 <?php session_start();?>
+<?php require_once "connection.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,7 +129,6 @@ function getFromDatabase($table_name){
     $tableName= $table_name;
 //     echo"<br> table name is ".$tableName;   
     global $conn;
-    $conn   = mysqli_connect('localhost','root','root','accounts');
 
     if(!$conn){ echo "getFromDatabaseEror connection error".mysqli_error($conn);}
     $query  =     "SELECT *FROM $tableName ORDER BY id desc";
@@ -257,7 +257,6 @@ if(isset($_POST['clear'])){
 
 //if press proceed 
 if(isset($_POST['submit'])){
-    $conn   =      mysqli_connect('localhost','root','','accounts');  
     $date = date('d-m-Y');
     if (!$conn) {echo "errrrrrrrrrrr";}
     $b_type        = $_POST['b_select'];
