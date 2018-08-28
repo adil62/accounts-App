@@ -13,13 +13,27 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mt-3">
+<!--             <div class="col-md-6 mt-3">
                 <a href="#" class="top-bg px-5 offset-md-3" id="totalIncomeTop"><strong>Total income:</strong></a>
             </div>
 
             <div class="col-md-6 mt-3">
                 <a href="#" class="top-bg px-5 offset-md-3" id="totalBankBalanceTop"><strong>Bank balance</strong></a>
+            </div> -->
+
+            <div class="top-info">
+                <div class="info1">
+                    <span class="info1-txt">Total Income</span>
+                    <span class="info1-value" id="totalIncomeTop">-----</span>
+                </div>
+                <div class="info2">
+                    <span class="info2-txt">Bank Balance</span>
+                    <span class="info2-value" id="totalBankBalanceTop" >-------</span>
+                </div>
+
             </div>
+
+
         </div>
         <hr>
         <form action="" method="post" class="form-group">
@@ -166,8 +180,8 @@ function updateTop(){
 global $b_income,$b_bankBalance;
                                                     ?>
     <script type="text/javascript">
-        document.getElementById("totalIncomeTop").innerHTML = '<?php echo "Total Income: ".$b_income; ?>';
-        document.getElementById("totalBankBalanceTop").innerHTML = '<?php echo "Current Account Balance: ".$b_bankBalance; ?>';
+        document.getElementById("totalIncomeTop").innerHTML = '<?php echo "".$b_income; ?>';
+        document.getElementById("totalBankBalanceTop").innerHTML = '<?php echo "".$b_bankBalance; ?>';
     </script>
     <?php
 }
