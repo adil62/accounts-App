@@ -18,8 +18,8 @@ body {
     width: 100%;
     position: relative;
     height: 100%;
-    background: linear-gradient(rgba( 255, 255, 255, 0.7), rgba( 255, 255, 255, 0.7)),
-    url("https://wallpaperwire.com/wp-content/uploads/2018/03/Abstract-background-3.jpg");
+    background: linear-gradient(rgba( 255, 255, 255, 0.7), rgba( 255, 255, 255, 0.4)),
+    url("../../resources/images/background.jpg");
 }
 
 body #vertical-center {
