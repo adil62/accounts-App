@@ -80,42 +80,29 @@
                 <a href="/print_record.php" class="sidebar-item clear-fix btn btn-sidebar">Print Record</a>
 
             </li>
-<!--
+
             <li>
                 <a href="Print all records" class="sidebar-item clear-fix btn btn-sidebar">Print All Records</a>
 
             </li>
--->
-<!--
-            <li>
-                <a href="#" class="sidebar-item clear-fix btn btn-sidebar">P</a>
 
-            </li>
--->
         </ul>
     <div class="footer">
-        <a href="https://wss.kseb.in/selfservices/quickpay" class="btn2" target="_blank">K.S.E.B</a>
+        <a href="https://wss.kseb.in/selfservices/quickpay" class="btn2 m-c2" target="_blank">K.S.E.B</a>
         <a href="https://portal2.bsnl.in/myportal/cfa.do" class="btn2" target="_blank">B.S.N.L</a>
         <a href="https://epay.kwa.kerala.gov.in/" class="btn2" target="_blank">Water Authority</a>
         <a href="https://orientalinsurance.org.in/web/guest/renew?isSelected=renew&isRefresh=true" class="btn2" target="_blank">Oriental Insurance</a>
         <a href="https://www.makemytrip.com/flights/" class="btn2" target="_blank">Flight</a>
     </div>
+
+
+
     <script type="text/javascript" src="event.js"></script>
     <script type="text/javascript">
         function myfun(){
             var amount = prompt("enter the amount that you deposited");
             window.location.href = "http://localhost/accountApp/index.php?amount=" + amount;
         } 
-
-       
-
-        //  document.onkeydown = function(e){
-        //     if(e.keyCode == 46){ // f5 keycode is 116
-        //     alert("pressed asdasd");
-        //     alert("pressed asdasd");
-        //     }
-        // }       ​
-    
 
     </script>
 </body>
