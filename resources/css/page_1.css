@@ -14,6 +14,8 @@ html {
 }
 
 body {
+    margin: 0 5%;
+    width: 100%;
     position: relative;
     height: 100%;
     background: linear-gradient(rgba( 255, 255, 255, 0.7), rgba( 255, 255, 255, 0.7)),
@@ -48,7 +50,6 @@ FOOTER
 .footer{
     width: 100%;
     position: absolute;
-    margin-left: 8%;
     bottom: 5%;
     
 }
@@ -91,8 +92,10 @@ MAKE RESPONSIVE
     
     
 }
-
-
+/*margin*/
+.m-c2{
+    margin-left: 2rem;
+}
 
 
 
