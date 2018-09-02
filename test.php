@@ -6,18 +6,26 @@
 </head>
 <body>
     <form action="" method="post">
-        <input type="text" name="txt">
-        <input type="submit" name="submit" id="">
+
+   <select>
+       <option value="">Day</option>
+       <option value="">1</option>
+       <option value="">2</option>
+   </select>
+      <select>
+       <option value="">Month</option>
+       <option value="">1</option>
+       <option value="">2</option>
+   </select>
+      <select>
+       <option value="">year</option>
+       <option value="">2000</option>
+       <option value="">2001</option>
+   </select>s   
     </form>
 </body>
 </html>
 
 
-<?php 
-// require_once("connection.php");
-
-$init = array("12","9","1999");
-echo $init[0];
-echo strlen($init[0]);
 
 
