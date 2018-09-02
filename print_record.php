@@ -20,85 +20,168 @@
         }
         body{
             height: 100vh;
-             background: linear-gradient(rgba( 255, 255, 255, 0.7), rgba( 255, 255, 255, 0.7)),
-    url("https://wallpaperwire.com/wp-content/uploads/2018/03/Abstract-background-3.jpg");
+             background: 
+            url("resources/images/background.jpg");
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+<div class="container">
+   <form action="" class="form-group" method="POST">
         <div class="row">
-            
-                <form action="" method="post" class="form-group input-field">
-                    <input type="date" name="date" class="form-control">
-                    <input type="submit" name="submit" class="btn btn-primary form-control">
-                </form>
-                <div class="col-md-4">
-                <button class="btn btn-warning d-inline" ><a href="http://localhost/accountsApp" >Goback</a></button>
+            <div class="col-md-4">
+                <label for="date">Paraticular Date</label>
+                <input type="date" id="date" name="date" size="5">
+            </div>
+            <div class="col-md-8">
+                <label for="date2">Particular Time Period</label>
+<!--                <input type="date" id="date2" name="datePer1" value="from">   -->
+               <input placeholder="From" name="datePer1" type="date" id="date2" size="12">
+               <input placeholder="To" name="datePer2" type="date" id="date2" size="12">
+               <input type="submit" name="submit">   
             </div>
         </div>
-    
+    </form>
 
 <?php   
 
 if(isset($_POST['submit'])){
-    $date = $_POST['date'];
-//    echo "date is ".$date;
-    $date = explode("-",$date);
-    $date = $date[2]."-".$date[1]."-".$date[0];
-    $date = trim($date);
-//    echo "<br>".$date;
-    $conn = mysqli_connect('localhost','root','','accounts');
-    $query = "SELECT *FROM records WHERE date='$date'";
-    $result = mysqli_query($conn,$query);
-    
-    ?>
-    <table class="table table-dashed table-hover table-condensed margin-top">
-        <tr>
-            <th>No.</th>
-            <th>Amount</th>
-            <th>Gross</th>
-            <th>Charge</th>
-            <th>Income</th>
-            <th>Type</th>
-            <th>Date</th>
-        </tr>
-        
-        <?php
-               while( $row = mysqli_fetch_assoc($result) ){
-                   ?>
-                   <tr>
-                       <td><?php echo $row['id']; ?></td>
-                       <td><?php echo $row['amount']; ?></td>
-                       <td><?php echo $row['gross']; ?></td>
-                       <td><?php echo $row['charge']; ?></td>
-                       <td><?php echo $row['income']; ?></td>
-                       <td><?php echo $row['type']; ?></td>
-                       <td><?php echo $row['date']; ?></td>
-                   </tr><?php
-               }?>
+    require_once 'connection.php';
+    // function to find the difference / number of days between 2 dates(intimestamps) 
+    // then rconverts the difference in seconds to days by deviding it with 86400(24hours in seconds)
+    function daydiff($from,$to){
+        $re  = $to-$from;
+        $re  = round($re/86400);
+        // echo $re;
+        return $re;
+    }
+    function formatDate($date){
+        if ($date!="") {
+            $date = explode("-",$date);
+            // print_r( $date);echo "<br>";
+            $date = $date[2]."-".$date[1]."-".$date[0];
+            // print_r($date);        
+            $date = trim($date);
+        }
+        return $date;
+    }
+    // makes array of strings to actual date format
+    function generateDate($day,$month,$year){
+        if (strlen($day)==1) {
+            // echo "<br>len is 1 ";
+            $date = "0".$day."-".$month."-".$year;      
+        }else{
+            $date = $day."-".$month."-".$year;
+        }
+        // echo "agenratDate()".$date."<br>";
+        return $date;
+    }
+    function calculateDates($from,$days){
+        $genDate_combi = array();
+        $init = date("d-m-Y",$from);
+        $init = explode("-", $init);// echo "in the calc";// echo $init[0]."--before";// echo $init[1];// echo $init[2];
+        $i=1;
+        while($days>$i){
+            $init[0] = $init[0]+1;
+            $genDate = generateDate($init[0],$init[1],$init[2]);
+            array_push($genDate_combi, $genDate);
+            // echo $init[0];
+            $i++;
+        }
+        // print_r($genDate_combi);
+        return $genDate_combi;
+    }
+
+
+    function build_query($gendate){
+        $date_string    = implode("','", $gendate);
+        $query = "SELECT *FROM records WHERE date IN('$date_string')";
+            // echo $query;
+            return $query;  
+
+    }
+    function displayRecords($result){
+        ?>
+        <table class="table table-dashed table-hover table-condensed margin-top">
+                <tr>
+                    <th>No.</th>
+                    <th>Amount</th>
+                    <th>Gross</th>
+                    <th>Charge</th>
+                    <th>Income</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                </tr>
+
+                <?php
+                       while( $row = mysqli_fetch_assoc($result) ){
+                           ?>
+                           <tr>
+                               <td><?php echo $row['id']; ?></td>
+                               <td><?php echo $row['amount']; ?></td>
+                               <td><?php echo $row['gross']; ?></td>
+                               <td><?php echo $row['charge']; ?></td>
+                               <td><?php echo $row['income']; ?></td>
+                               <td><?php echo $row['type']; ?></td>
+                               <td><?php echo $row['date']; ?></td>
+                           </tr><?php
+                       }?>
 
     </table>
-</div>
-  </body>
+    <?php } 
 
-</html>
-    <?php
+
+    if(!$conn){echo "errrrrrrr";}
+    $date = $_POST['date'];
+    $date_from = $_POST['datePer1'];
+    $date_to   = $_POST['datePer2'];
+    
+    $flag = $date_from != "" && $date_to != "" ?1:0;
+    // echo "flag is ".$flag;
+    // echo $date;
+//    echo "date is ".$date;
+
+    $date = formatDate($date);
+    $date_from = formatDate($date_from);
+    $date_to = formatDate($date_to);
+    // echo $date_from.$date_to;
+
+//    echo "<br>".$date;
+    if($flag == false){
+        $query = "SELECT *FROM records WHERE date='$date'";
+        $result = mysqli_query($conn,$query);
+    //    var_dump($result);
+        displayRecords($result);
+
+        
+    }elseif ($flag==true) {
+        $from = strtotime($date_from);
+        $to   = strtotime($date_to);
+        $days = daydiff($from,$to);
+        // print_r($genDate_combi);
+        $genDate_combi  = calculateDates($from,$days);
+        // echo $date_from.$date_to;
+
+        // echo sizeof($genDate_combi);
+        $query  = build_query($genDate_combi);
+        $result = mysqli_query($conn,$query);
+        if (!$result) {
+            echo mysqli_error($conn);
+        }
+        // print_r($result);   
+        displayRecords($result);
+
+    }
+    ?>    
+    <!--container ends here  -->
+    </div> <?php
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
+    </body>
+
+    </html>
+
+
+

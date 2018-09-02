@@ -92,14 +92,11 @@
 
             </li>
             <li>
-                <a href="/print_record.php" class="sidebar-item clear-fix btn btn-sidebar">Print Record</a>
+                <a href="print_record.php" class="sidebar-item clear-fix btn btn-sidebar">Print Record</a>
 
             </li>
 
-            <li>
-                <a href="Print all records" class="sidebar-item clear-fix btn btn-sidebar">Print All Records</a>
 
-            </li>
 
         </ul>
     <div class="footer">
@@ -166,9 +163,10 @@ function deductBill(){
 
 function makeRecord(){
     global $b_gross,$conn,$b_amount,$b_charge,$b_tenderCash,$b_balance,$b_income,$b_bankBalance,$b_type,$date;
-    echo "b_select value is .".$b_type."<br> date is:".$date    ;
+    // echo "b_select value is .".$b_type."<br> date is:".$date    ;
     $query = "INSERT INTO records(gross,amount,charge,tendercash,balance,income,bankbalance,type,date) VALUES('$b_gross','$b_amount','$b_charge','$b_tenderCash','$b_balance','$b_income','$b_bankBalance','$b_type','$date')";
     $re     = mysqli_query($conn,$query);
+    echo !$re?mysqli_error($conn):"";
     
 }
 
@@ -295,9 +293,7 @@ if(isset($_POST['submit'])){
     $b_bankBalance = $b_bankBalance['bank_balance'];  
     // echo "bank balance is <br>".$b_bankBalance;
     // echo "income is <br>".$b_income;
-
-
-      updateTop();
+    updateTop();
 
 
 }
