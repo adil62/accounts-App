@@ -27,20 +27,31 @@
 </head>
 
 <body>
-<div class="container">
+<div class="header">
+    <div class="row">
+    <div class="col-md-2 my-3 mx-3">
+        <a href="index.php" class="btn btn-warning d-inline btn-lg">Go Back</a>   
+    </div>
+    </div>
+</div>
+<div class="container-fluid">
    <form action="" class="form-group" method="POST">
         <div class="row">
+            <div class="col-md-2"></div>
             <div class="col-md-4">
                 <label for="date">Paraticular Date</label>
                 <input type="date" id="date" name="date" size="5">
             </div>
-            <div class="col-md-8">
-                <label for="date2">Particular Time Period</label>
+            <div class="col-md-6">
+               <label for="date2">Date From</label>
 <!--                <input type="date" id="date2" name="datePer1" value="from">   -->
                <input placeholder="From" name="datePer1" type="date" id="date2" size="12">
+               <label>To</label>
                <input placeholder="To" name="datePer2" type="date" id="date2" size="12">
-               <input type="submit" name="submit">   
+               <input type="submit" name="submit" class="btn btn-outline-success">   
             </div>
+               
+
         </div>
     </form>
 
