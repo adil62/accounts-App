@@ -255,6 +255,7 @@ if(isset($_POST['clear'])){
 
 //if press proceed 
 if(isset($_POST['submit'])){
+    ?> <script type="text/javascript">confirm("Confirm Submission");</script><?php
     $date = date('d-m-Y');
     if (!$conn) {echo "errrrrrrrrrrr";}
     $b_type        = $_POST['b_select'];
