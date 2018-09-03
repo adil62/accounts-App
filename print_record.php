@@ -50,15 +50,15 @@
             <div class="col-md-2"></div>
             <div class="col-md-4">
                 <label for="date" class="">Paraticular Date</label>
-                <input type="text" id="date" placeholder="Select" name="date" size="12">
+                <input type="text" id="date" placeholder="Select" name="date" size="12" autocomplete="off">
 
             </div>
             <div class="col-md-6">
                <label for="date2">Date From</label>
 <!--                <input type="date" id="date2" name="datePer1" value="from">   -->
-               <input placeholder="From" name="datePer1" type="text" id="date2" size="12">
+               <input placeholder="From" name="datePer1" type="text" id="date2" size="12" autocomplete="off">
                <label>To</label>
-               <input placeholder="To" name="datePer2" type="text" id="date3" size="12">
+               <input placeholder="To" name="datePer2" type="text" id="date3" size="12" autocomplete="off">
                <input type="submit" name="submit" class="btn btn-outline-success">   
             </div>
                
