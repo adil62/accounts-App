@@ -16,22 +16,15 @@
             margin: 5% 50%;
             transform: translateX(-50%);
         }
-        .input-field{
-            margin-left: 10%;
-            margin-right: 3%;     
-            width: 50%;
-        }
         .margin-top{
             margin-top: 5%;
         }
         body{
-            height: 100vh;
+            height: 120vh;
              background: 
             url("resources/images/background.jpg");
         }
-        .fa-cus{
-            font-size: 1.5em;
-        }
+    
     </style>
     
 </head>
@@ -44,7 +37,7 @@
     </div>
     </div>
 </div>
-<div class="container-fluid">
+<div class="container">
    <form action="" class="form-group" method="POST">
         <div class="row">
             <div class="col-md-2"></div>
@@ -55,7 +48,6 @@
             </div>
             <div class="col-md-6">
                <label for="date2">Date From</label>
-<!--                <input type="date" id="date2" name="datePer1" value="from">   -->
                <input placeholder="From" name="datePer1" type="text" id="date2" size="12" autocomplete="off">
                <label>To</label>
                <input placeholder="To" name="datePer2" type="text" id="date3" size="12" autocomplete="off">
