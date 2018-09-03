@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <title>Print record</title>
     <link rel="stylesheet" href="vendor/css/bootstrap-4.1.2-dist/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    
     <style>
         .container{
             margin: 5% 50%;
@@ -23,7 +29,11 @@
              background: 
             url("resources/images/background.jpg");
         }
+        .fa-cus{
+            font-size: 1.5em;
+        }
     </style>
+    
 </head>
 
 <body>
@@ -39,22 +49,30 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-4">
-                <label for="date">Paraticular Date</label>
-                <input type="date" id="date" name="date" size="5">
+                <label for="date" class="">Paraticular Date</label>
+                <input type="text" id="date" placeholder="Select" name="date" size="12">
+
             </div>
             <div class="col-md-6">
                <label for="date2">Date From</label>
 <!--                <input type="date" id="date2" name="datePer1" value="from">   -->
-               <input placeholder="From" name="datePer1" type="date" id="date2" size="12">
+               <input placeholder="From" name="datePer1" type="text" id="date2" size="12">
                <label>To</label>
-               <input placeholder="To" name="datePer2" type="date" id="date2" size="12">
+               <input placeholder="To" name="datePer2" type="text" id="date3" size="12">
                <input type="submit" name="submit" class="btn btn-outline-success">   
             </div>
                
 
         </div>
     </form>
-
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#date').datepicker({format: "dd-mm-yyyy"});
+    $('#date2').datepicker({format: "dd-mm-yyyy"});
+    $('#date3').datepicker({format: "dd-mm-yyyy"});
+});
+    
+</script>
 <?php   
 
 if(isset($_POST['submit'])){
@@ -71,10 +89,11 @@ if(isset($_POST['submit'])){
         if ($date!="") {
             $date = explode("-",$date);
             // print_r( $date);echo "<br>";
-            $date = $date[2]."-".$date[1]."-".$date[0];
+            $date = $date[0]."-".$date[1]."-".$date[2];
             // print_r($date);        
             $date = trim($date);
         }
+//        echo $date;
         return $date;
     }
     // makes array of strings to actual date format
@@ -100,7 +119,7 @@ if(isset($_POST['submit'])){
             // echo $init[0];
             $i++;
         }
-        // print_r($genDate_combi);
+//         print_r($genDate_combi);
         return $genDate_combi;
     }
 
@@ -108,7 +127,7 @@ if(isset($_POST['submit'])){
     function build_query($gendate){
         $date_string    = implode("','", $gendate);
         $query = "SELECT *FROM records WHERE date IN('$date_string')";
-            // echo $query;
+//             echo $query;
             return $query;  
 
     }
@@ -144,13 +163,12 @@ if(isset($_POST['submit'])){
 
 
     if(!$conn){echo "errrrrrrr";}
-    $date = $_POST['date'];
+    $date =      $_POST['date'];
     $date_from = $_POST['datePer1'];
     $date_to   = $_POST['datePer2'];
     
     $flag = $date_from != "" && $date_to != "" ?1:0;
-    // echo "flag is ".$flag;
-    // echo $date;
+//     echo "flag is ".$flag;
 //    echo "date is ".$date;
 
     $date = formatDate($date);
@@ -170,6 +188,7 @@ if(isset($_POST['submit'])){
         $from = strtotime($date_from);
         $to   = strtotime($date_to);
         $days = daydiff($from,$to);
+//        echo "<br>$days";
         // print_r($genDate_combi);
         $genDate_combi  = calculateDates($from,$days);
         // echo $date_from.$date_to;
