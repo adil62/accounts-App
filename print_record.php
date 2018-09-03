@@ -24,7 +24,9 @@
              background: 
             url("resources/images/background.jpg");
         }
-    
+        input::placeholder{
+            text-align: center;
+        }
     </style>
     
 </head>
