@@ -27,6 +27,9 @@
         input::placeholder{
             text-align: center;
         }
+        .header{
+            background-color: #ffffff;
+        }
     </style>
     
 </head>
