@@ -84,18 +84,17 @@ if(isset($_POST['submit'])){
     }
     function formatDate($date){
         $date = explode("-",$date);
-        $len =  strlen($date[0]);
-        echo "len is ".$len;
-        if( $len == 1) {
+        // echo "<br>length of the incoming date[0]is:".strlen($date[0]);
+        if(strlen($date[0]) == 1 ){
             // print_r( $date);echo "<br>";
             $date = "0".$date[0]."-".$date[1]."-".$date[2];
             // print_r($date);        
             $date = trim($date);
-//        echo $date;
+           // echo "<br>executing the if".$date;
         }
-        elseif( sizeof($date)>1 ) {
+        elseif( strlen($date[0])>1 ) {
             $date = $date[0]."-".$date[1]."-".$date[2];
-            # code...
+            // echo "<br>executing the elseif".$date;
         }
         return $date;
     }
@@ -175,7 +174,7 @@ if(isset($_POST['submit'])){
     
     $flag = $date_from != "" && $date_to != "" ?1:0;
 //     echo "flag is ".$flag;
-   echo "date is ".$date;
+   // echo "date is ".$date;
 
     $date = formatDate($date);
     $date_from = formatDate($date_from);
