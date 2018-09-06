@@ -1,2 +1,2 @@
-<?php    $conn   =      mysqli_connect('localhost','root','root','accounts');  
+<?php    $conn   =      mysqli_connect('localhost','root','','accounts');  
 ?>

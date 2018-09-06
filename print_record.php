@@ -83,14 +83,20 @@ if(isset($_POST['submit'])){
         return $re;
     }
     function formatDate($date){
-        if ($date!="") {
-            $date = explode("-",$date);
+        $date = explode("-",$date);
+        $len =  strlen($date[0]);
+        echo "len is ".$len;
+        if( $len == 1) {
             // print_r( $date);echo "<br>";
-            $date = $date[0]."-".$date[1]."-".$date[2];
+            $date = "0".$date[0]."-".$date[1]."-".$date[2];
             // print_r($date);        
             $date = trim($date);
-        }
 //        echo $date;
+        }
+        elseif( sizeof($date)>1 ) {
+            $date = $date[0]."-".$date[1]."-".$date[2];
+            # code...
+        }
         return $date;
     }
     // makes array of strings to actual date format
@@ -129,6 +135,7 @@ if(isset($_POST['submit'])){
 
     }
     function displayRecords($result){
+        // if($result!=false || $result!=null){
         ?>
         <table class="table table-dashed table-hover table-condensed margin-top">
                 <tr>
@@ -153,7 +160,9 @@ if(isset($_POST['submit'])){
                                <td><?php echo $row['type']; ?></td>
                                <td><?php echo $row['date']; ?></td>
                            </tr><?php
-                       }?>
+                       }
+        // }  
+        ?>
 
     </table>
     <?php } 
@@ -166,7 +175,7 @@ if(isset($_POST['submit'])){
     
     $flag = $date_from != "" && $date_to != "" ?1:0;
 //     echo "flag is ".$flag;
-//    echo "date is ".$date;
+   echo "date is ".$date;
 
     $date = formatDate($date);
     $date_from = formatDate($date_from);
